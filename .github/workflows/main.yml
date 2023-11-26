@@ -22,7 +22,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: 22
         script: |
-          cd root/lebro
+          cd /root/lebro
           source ./venv/bin/activate
           git pull
           python manage.py migrate
