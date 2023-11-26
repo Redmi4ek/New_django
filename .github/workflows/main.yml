@@ -2,12 +2,11 @@ name: Deploy
 on:
   push:
     branches:
-        1 
-          - main 
+    - main 
 jobs:
   build:
   
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       max-parallel: 4
       matrix:
