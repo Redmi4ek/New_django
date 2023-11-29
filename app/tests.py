@@ -1,6 +1,10 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from app.models import News
 from datetime import date 
+from django.http import HttpRequest,HttpResponse
+from .views import main_page
+from django.urls import reverse
+
 
 class newsData(TestCase):
     def setUp(self):
@@ -22,5 +26,20 @@ class newsData(TestCase):
         self.assertEqual(self.news_instance.public, 'Some public content')
         self.assertEqual(self.news_instance.date, date(2022, 1, 1))
         self.assertIsNotNone(self.news_instance.id)
+
+    def test_views(self):
+        client = Client()
+        request = HttpRequest()
+        response: HttpResponse = main_page(request)  
+        response = client.get(reverse('index'))  
+
+
+        self.assertTemplateUsed(response, 'index.html')
+
+    
+
+    
+
+
 
     
