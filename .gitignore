@@ -1,2 +1,9 @@
 .env
 README.md
+env/
+env
+venv
+.venv
+venv/
+/venv
+db.sqlite3
